@@ -350,7 +350,6 @@ if (!password_verify($remeveA_current_pass_var,$_SESSION['Password'])) {
         <p>
         <select class="settings_textfield" name="edit_language">
             <option <?php if($_SESSION['language'] == "English"){ echo "selected";} ?> >English</option>
-        <option <?php if($_SESSION['language'] == "العربية"){ echo "selected";} ?> >العربية</option>
         </select>
         </p>
         <div style="background: #e9ebee; border-radius: 3px; padding: 15px;">

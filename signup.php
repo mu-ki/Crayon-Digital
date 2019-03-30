@@ -19,9 +19,9 @@ if (is_file('home.php')){
 }
 include_once $path."langs/set_lang.php";
 ?>
-<html dir="<? echo lang('html_dir'); ?>">
+<html dir="<?php echo lang('html_dir'); ?>">
 <head>
-    <title><? echo lang('create_new_account'); ?> | CRAYON'D</title>
+    <title><?php echo lang('create_new_account'); ?> | CRAYON'D</title>
     <meta charset="UTF-8">
     <meta name="description" content="CRAYON'D is a social network platform ">
     <meta name="keywords" content="homepage,main,login,">
@@ -33,38 +33,38 @@ include_once $path."langs/set_lang.php";
     <!--============[ Nav bar ]============-->
     <div class="login_signup_navbar">
         <a href="index" class="login_signup_navbarLinks">CRAYON'D</a>
-        <a href="#" class="login_signup_navbarLinks"><? echo lang('help'); ?></a>
-        <a href="#" class="login_signup_navbarLinks"><? echo lang('terms'); ?></a>
-        <a href="#" class="login_signup_navbarLinks"><? echo lang('privacyPolicy'); ?></a>
-        <div style="float: <? echo lang('float2'); ?>;">
-            <a href="login" class="login_signup_btn1"><? echo lang('login'); ?></a>
-            <a href="signup" class="login_signup_btn2"><? echo lang('signup'); ?></a>
+        <a href="#" class="login_signup_navbarLinks"><?php echo lang('help'); ?></a>
+        <a href="#" class="login_signup_navbarLinks"><?php echo lang('terms'); ?></a>
+        <a href="#" class="login_signup_navbarLinks"><?php echo lang('privacyPolicy'); ?></a>
+        <div style="float: <?php echo lang('float2'); ?>;">
+            <a href="login" class="login_signup_btn1"><?php echo lang('login'); ?></a>
+            <a href="signup" class="login_signup_btn2"><?php echo lang('signup'); ?></a>
         </div>
     </div>
     <!--============[ main contains ]============-->
     <div align="center">
-        <div class="login_signup_box2" style="text-align:<? echo lang('textAlign'); ?>">
+        <div class="login_signup_box2" style="text-align:<?php echo lang('textAlign'); ?>">
         <!--============[ sign up sec ]============-->
-            <h4 align="center"><? echo lang('create_new_account'); ?></h4>
-            <p><input type="text" name="signup_fullname" class="login_signup_textfield" id="fn" placeholder="<? echo lang('fullname'); ?>"/></p>
-            <p><input type="text" name="signup_username" class="login_signup_textfield" id="un" placeholder="<? echo lang('username'); ?>"/></p>
-            <p><input type="email" name="signup_email" class="login_signup_textfield" id="em" placeholder="<? echo lang('email'); ?>"/></p>
-            <p><input type="password" name="signup_password" class="login_signup_textfield" id="pd" placeholder="<? echo lang('password'); ?>"/></p>
-            <p><input type="password" name="signup_cpassword" class="login_signup_textfield" id="cpd" placeholder="<? echo lang('confirm_password'); ?>"/></p>
+            <h4 align="center"><?php echo lang('create_new_account'); ?></h4>
+            <p><input type="text" name="signup_fullname" class="login_signup_textfield" id="fn" placeholder="<?php echo lang('fullname'); ?>"/></p>
+            <p><input type="text" name="signup_username" class="login_signup_textfield" id="un" placeholder="<?php echo lang('username'); ?>"/></p>
+            <p><input type="email" name="signup_email" class="login_signup_textfield" id="em" placeholder="<?php echo lang('email'); ?>"/></p>
+            <p><input type="password" name="signup_password" class="login_signup_textfield" id="pd" placeholder="<?php echo lang('password'); ?>"/></p>
+            <p><input type="password" name="signup_cpassword" class="login_signup_textfield" id="cpd" placeholder="<?php echo lang('confirm_password'); ?>"/></p>
             <p> 
             <select class="login_signup_textfield" name="gender" id="gr">
-              <option selected><? echo lang('male'); ?></option>
-              <option><? echo lang('female'); ?></option>
+              <option selected><?php echo lang('male'); ?></option>
+              <option><?php echo lang('female'); ?></option>
             </select>
             </p>
             <p style="font-size: 11px;color: #5d5d5d;margin: 8px 0px; ">
-                <? echo lang('by_clicking_signup_str'); ?> <a href="terms"><? echo lang('terms'); ?></a>, <a href="privacy"><? echo lang('privacyPolicy'); ?></a> <? echo lang('and'); ?> <a href="cookie"><? echo lang('cookie_use'); ?></a>.</p>
-            <button type="submit" class="login_signup_btn2" id="signupFunCode"><? echo lang('create_account'); ?></button>
+                <?php echo lang('by_clicking_signup_str'); ?> <a href="terms"><?php echo lang('terms'); ?></a>, <a href="privacy"><?php echo lang('privacyPolicy'); ?></a> <?php echo lang('and'); ?> <a href="cookie"><?php echo lang('cookie_use'); ?></a>.</p>
+            <button type="submit" class="login_signup_btn2" id="signupFunCode"><?php echo lang('create_account'); ?></button>
             <p id="login_wait" style="margin: 0px;"></p>
         </div>
         <!--============[ login sec ]============-->
         <div style="background: #fff; border-radius: 3px; width: 420px; padding: 15px; margin: 15px;color: #7b7b7b;" align="center">
-            <? echo lang('already_have_an_account'); ?> <a href="login"><? echo lang('login_now'); ?></a>.<hr style="margin: 8px;">
+            <?php echo lang('already_have_an_account'); ?> <a href="login"><?php echo lang('login_now'); ?></a>.<hr style="margin: 8px;">
         </div>
     </div>
 
@@ -82,12 +82,12 @@ url:'includes/login_signup_codes.php',
 data:{'req':'signup_code','fn':fullname,'un':username,'em':emailAdd,'pd':password,'cpd':cpassword,'gr':gender},
 beforeSend:function(){
 $('.login_signup_btn2').hide();
-$('#login_wait').html("<b><? echo lang('creating_your_account'); ?></b>");
+$('#login_wait').html("<b><?php echo lang('creating_your_account'); ?></b>");
 },
 success:function(data){
 $('#login_wait').html(data);
 if (data == "Done..") {
-    $('#login_wait').html("<p class='alertGreen'><? echo lang('done'); ?>..</p>");
+    $('#login_wait').html("<p class='alertGreen'><?php echo lang('done'); ?>..</p>");
     setTimeout(' window.location.href = "home"; ',2000);
 }else{
     $('.login_signup_btn2').show();

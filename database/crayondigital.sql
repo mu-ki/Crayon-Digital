@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.8.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 17, 2017 at 08:14 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Host: 127.0.0.1
+-- Generation Time: Mar 27, 2019 at 11:22 AM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `wallstant`
+-- Database: `social`
 --
 
 -- --------------------------------------------------------
@@ -36,6 +38,14 @@ CREATE TABLE `comments` (
   `c_time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`c_id`, `c_author_id`, `c_post_id`, `c_content`, `c_edited`, `c_time_edited`, `c_time`) VALUES
+(1557458665, -583492834, 1554064435, 'booma', 0, '', 1553675168),
+(1557786332, -1243637936, 1554064435, 'super', 0, '', 1553674689);
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +58,13 @@ CREATE TABLE `follow` (
   `uf_two` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `follow`
+--
+
+INSERT INTO `follow` (`id`, `uf_one`, `uf_two`) VALUES
+(4, -1243637936, -227135624);
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +76,14 @@ CREATE TABLE `likes` (
   `liker` bigint(11) NOT NULL,
   `post_id` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `liker`, `post_id`) VALUES
+(1, -1243637936, 1554064435),
+(2, -583492834, 1554064435);
 
 -- --------------------------------------------------------
 
@@ -108,6 +133,18 @@ CREATE TABLE `notifications` (
   `time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `n_id`, `from_id`, `for_id`, `notifyType_id`, `notifyType`, `seen`, `time`) VALUES
+(5, 1875998453, -1243637936, -227135624, -1243637936, 'follow', 1, 1553674673),
+(6, -1784864752, -1243637936, -227135624, -1243637936, 'star', 1, 1553674674),
+(7, 1580928252, -1243637936, -227135624, 1554064435, 'like', 1, 1553674680),
+(8, 1625700071, -1243637936, -227135624, 1554064435, 'comment', 1, 1553674689),
+(9, -2019624996, -583492834, -227135624, 1554064435, 'like', 1, 1553675163),
+(10, -2021595402, -583492834, -227135624, 1554064435, 'comment', 1, 1553675168);
+
 -- --------------------------------------------------------
 
 --
@@ -119,6 +156,13 @@ CREATE TABLE `r_star` (
   `u_id` bigint(11) NOT NULL,
   `p_id` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `r_star`
+--
+
+INSERT INTO `r_star` (`id`, `u_id`, `p_id`) VALUES
+(2, -1243637936, -227135624);
 
 -- --------------------------------------------------------
 
@@ -165,6 +209,16 @@ CREATE TABLE `signup` (
   `aSetup` int(11) NOT NULL DEFAULT '0',
   `online` int(100) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `signup`
+--
+
+INSERT INTO `signup` (`main_id`, `id`, `Fullname`, `Username`, `Email`, `Password`, `followers`, `Userphoto`, `user_cover_photo`, `school`, `work`, `work0`, `country`, `birthday`, `verify`, `website`, `bio`, `admin`, `gender`, `login_attempts`, `language`, `aSetup`, `online`) VALUES
+(12, -227135624, 'muki', 'muki', 'muki@f.om', '$2y$12$d.TzSGlBJoRgdTNcDyoPGu0KeFcEzz.1e13v3Xzak7s0vYmfx6KKa', 1, 'user-female.png', '', '', '', '', '', '', 0, '', '', '1', 'Female', 0, 'English', 0, 0),
+(13, -1243637936, 'rama', 'rama', 'rama@g.com', '$2y$12$87Gpkt1rZuk81eMn/OlD3eM3s07bv/l0A.V0YPZfinuuNA0Dg9Sca', 0, 'user-male.png', '', '', '', '', '', '', 1, '', '', '', 'Male', 0, 'English', 0, 0),
+(14, -583492834, 'booma', 'booma', 'booma@g.com', '$2y$12$TsWdJCLGBYA7zVDrM0SMPuyIwzV5.v14KLCZghruPckpRgGeB6l/i', 0, 'user-female.png', '', '', '', '', '', '', 0, '', '', '', 'Female', 0, 'English', 0, 0),
+(15, -1531980686, 'dine', 'dine', 'dine@gmail.com', '$2y$12$mCxOIp7zgmomZxMsLuPDquG/4c7D556JEZwsPwy2A0BP7ZnyAofeS', 0, 'user-male.png', '', '', '', '', '', '', 0, '', '', '', 'Male', 0, 'English', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -215,6 +269,13 @@ CREATE TABLE `wpost` (
   `p_privacy` int(11) NOT NULL DEFAULT '0',
   `shared` varchar(1000) CHARACTER SET utf8mb4 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wpost`
+--
+
+INSERT INTO `wpost` (`post_id`, `author_id`, `post_img`, `post_time`, `post_content`, `p_title`, `p_likes`, `p_privacy`, `shared`) VALUES
+(1554064435, -227135624, 'user_post_img/1553674644507993112.png', 1553674643, 'ramar', '', 2, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -300,57 +361,69 @@ ALTER TABLE `wpost`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `c_id` bigint(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1557786333;
+
 --
 -- AUTO_INCREMENT for table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `mynotepad`
 --
 ALTER TABLE `mynotepad`
   MODIFY `main_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `r_star`
 --
 ALTER TABLE `r_star`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `saved`
 --
 ALTER TABLE `saved`
   MODIFY `main_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `signup`
 --
 ALTER TABLE `signup`
-  MODIFY `main_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `main_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `supportbox`
 --
 ALTER TABLE `supportbox`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `typing_m`
 --
 ALTER TABLE `typing_m`
   MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

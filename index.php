@@ -19,9 +19,9 @@ if (is_file('home.php')){
 }
 include_once $path."langs/set_lang.php";
 ?>
-<html dir="<? echo lang('html_dir'); ?>">
+<html dir="<?php echo lang('html_dir'); ?>">
 <head>
-    <title><? echo lang('welcome'); ?> | CRAYON'D</title>
+    <title><?php echo lang('welcome'); ?> | CRAYON'D</title>
     <meta charset="UTF-8">
     <meta name="description" content="CRAYON'D is a social network platform ">
     <meta name="keywords" content="homepage,main,login,">
@@ -33,25 +33,25 @@ include_once $path."langs/set_lang.php";
     <!--============[ Nav bar ]============-->
         <div class="login_signup_navbar">
                 <a href="index" class="login_signup_navbarLinks">CRAYON'D</a>
-                <a href="#" class="login_signup_navbarLinks"><? echo lang('help'); ?></a>
-                <a href="#" class="login_signup_navbarLinks"><? echo lang('terms'); ?></a>
-                <a href="#" class="login_signup_navbarLinks"><? echo lang('privacyPolicy'); ?></a>
-                <div style="float: <? echo lang('float2'); ?>;">
-                    <a href="login" class="login_signup_btn1"><? echo lang('login'); ?></a>
-                    <a href="signup" class="login_signup_btn2"><? echo lang('signup'); ?></a>
+                <a href="#" class="login_signup_navbarLinks"><?php echo lang('help'); ?></a>
+                <a href="#" class="login_signup_navbarLinks"><?php echo lang('terms'); ?></a>
+                <a href="#" class="login_signup_navbarLinks"><?php echo lang('privacyPolicy'); ?></a>
+                <div style="float: <?php echo lang('float2'); ?>;">
+                    <a href="login" class="login_signup_btn1"><?php echo lang('login'); ?></a>
+                    <a href="signup" class="login_signup_btn2"><?php echo lang('signup'); ?></a>
                 </div>
         </div>
         <!--============[ main contains ]============-->
         <div class="login_signup_box">
-        <h3 align="center"><? echo lang('welcome_to'); ?> CRAYON'D</h3>
-        <p align="center" style="color: #999; margin-bottom: 25px;"><? echo lang('wallstant_main_string'); ?>.</p>
+        <h3 align="center"><?php echo lang('welcome_to'); ?> CRAYON'D</h3>
+        <p align="center" style="color: #999; margin-bottom: 25px;"><?php echo lang('wallstant_main_string'); ?>.</p>
             <div style="display: flex;">
                 <div style="width: 100%;">
-                    <br><h4><? echo lang('login_now'); ?></h4>
-                    <p><input type="text" name="login_username" id="un" class="login_signup_textfield" placeholder="<? echo lang('email_or_username'); ?>"/></p>
-                    <p><input type="password" name="login_password" id="pd" class="login_signup_textfield" placeholder="<? echo lang('password'); ?>"/></p>
-                    <p><a href="#" style="color: #a2a2a2; font-size: 11px; float: <? echo lang('float2'); ?>;"> <? echo lang('forgot_password'); ?></a></p>
-                    <button type="submit" class="login_signup_btn1" id="loginFunCode"><? echo lang('login'); ?></button>
+                    <br><h4><?php echo lang('login_now'); ?></h4>
+                    <p><input type="text" name="login_username" id="un" class="login_signup_textfield" placeholder="<?php echo lang('email_or_username'); ?>"/></p>
+                    <p><input type="password" name="login_password" id="pd" class="login_signup_textfield" placeholder="<?php echo lang('password'); ?>"/></p>
+                    <p><a href="#" style="color: #a2a2a2; font-size: 11px; float: <?php echo lang('float2'); ?>;"> <?php echo lang('forgot_password'); ?></a></p>
+                    <button type="submit" class="login_signup_btn1" id="loginFunCode"><?php echo lang('login'); ?></button>
                     <p id="login_wait" style="margin: 0px;"></p>
                 </div>
                 <div style="width: 100%;text-align: center;">
@@ -60,7 +60,7 @@ include_once $path."langs/set_lang.php";
             </div>
         </div>
         <div style="background: #fff; border-radius: 3px; max-width: 800px; padding: 15px; margin:auto;margin-top: 15px;color: #7b7b7b;" align="center">
-            <? echo lang('dont_have_an_account'); ?> <a href="signup"><? echo lang('signup'); ?></a> <? echo lang('for_free'); ?>.<hr style="margin: 8px;">
+            <?php echo lang('dont_have_an_account'); ?> <a href="signup"><?php echo lang('signup'); ?></a> <?php echo lang('for_free'); ?>.<hr style="margin: 8px;">
         </div>
 
 <script type="text/javascript">
@@ -73,12 +73,12 @@ url:'includes/login_signup_codes.php',
 data:{'req':'login_code','un':username,'pd':password},
 beforeSend:function(){
 $('.login_signup_btn1').hide();
-$('#login_wait').html("<? echo lang('loading'); ?>...");
+$('#login_wait').html("<?php echo lang('loading'); ?>...");
 },
 success:function(data){
 $('#login_wait').html(data);
 if (data == "Welcome...") {
-    $('#login_wait').html("<p class='alertGreen'><? echo lang('welcome'); ?>..</p>");
+    $('#login_wait').html("<p class='alertGreen'><?php echo lang('welcome'); ?>..</p>");
     setTimeout(' window.location.href = "home"; ',2000);
 }else{
     $('.login_signup_btn1').show();
